@@ -17,7 +17,7 @@ import {
 import { formatEur, getHouse, housePath, houses } from "../lib/houses";
 import { useCopy } from "../lib/i18n/language-provider";
 import type { HouseId } from "../lib/i18n/types";
-import { PHONE_PRIMARY_HREF, VIBER_HREF } from "../lib/site";
+import { PHONE_PRIMARY_HREF, VIBER_HREF, withTrailingSlash } from "../lib/site";
 
 export function HousePage({ houseId }: { houseId: HouseId }) {
   const t = useCopy();
@@ -41,7 +41,7 @@ export function HousePage({ houseId }: { houseId: HouseId }) {
             <nav className="breadcrumb" aria-label={t.actions.backToHouses}>
               <Link href="/">{t.nav.home}</Link>
               <IconChevronRight size={14} />
-              <Link href="/#houses">{t.nav.houses}</Link>
+              <Link href={withTrailingSlash("/#houses")}>{t.nav.houses}</Link>
               <IconChevronRight size={14} />
               <span>{copy.name}</span>
             </nav>

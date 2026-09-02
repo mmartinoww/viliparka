@@ -100,13 +100,13 @@ async function run() {
 
   // Square social card cropped from the signature winter pool shot.
   if (available.has("84177573_805773519849538_1923606222838169600_n.jpg")) {
-    const ogPath = join(OUT, "identity/og-image.webp");
+    const ogPath = join(OUT, "identity/og-image.jpg");
     await mkdir(dirname(ogPath), { recursive: true });
     await sharp(join(SRC, "84177573_805773519849538_1923606222838169600_n.jpg"))
       .resize({ width: 1200, height: 630, fit: "cover", position: "centre" })
-      .webp({ quality: 82 })
+      .jpeg({ quality: 82 })
       .toFile(ogPath);
-    console.log("  identity/og-image.webp  1200x630");
+    console.log("  identity/og-image.jpg  1200x630");
   }
 
   console.log(

@@ -3,8 +3,9 @@
 Marketing site for **Вилни къщи „Парка“** (Guest Houses Parka): four self-contained holiday
 houses sharing one garden with a warm mineral pool, in the centre of Sapareva Banya, Bulgaria.
 
-Replaces the old Nicepage export at [vilnikashtiparka.com](https://vilnikashtiparka.com/), from
-which the photography and the factual details (houses, capacities, rates, contacts) were taken.
+Live at [parka-villas.com](https://parka-villas.com/). Replaces the old Nicepage export at
+[vilnikashtiparka.com](https://vilnikashtiparka.com/), from which the photography and the
+factual details (houses, capacities, rates, contacts) were taken.
 
 ## Stack
 
@@ -84,8 +85,12 @@ Type is Playfair Display for headings and Manrope for body, both with Cyrillic s
 mobile screenshots to `.screenshots/` (gitignored). Point it elsewhere with
 `BASE=http://localhost:3000 npm run shots`.
 
-## Not done yet
+## SEO
 
-SEO is deliberately partial: copy is written for search and pages carry titles, descriptions and
-Open Graph tags, but there is no `sitemap.xml`, `robots.txt`, JSON-LD structured data or
-`hreflang` yet.
+Canonical domain: `https://parka-villas.com/` (configured in `app/lib/site.ts` as `SITE_URL` /
+`HOME_URL`). All page URLs use trailing slashes — enforced in `next.config.mjs` and via
+`withTrailingSlash()` / `absoluteUrl()` helpers.
+
+Implemented: `sitemap.xml`, `robots.txt`, JSON-LD (LodgingBusiness, FAQ, breadcrumbs, etc.),
+Open Graph / Twitter cards, web app manifest, favicons, and per-page metadata. English copy is
+client-side only — metadata is Bulgarian; `/[locale]/` routes would be needed for English SEO.

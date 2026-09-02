@@ -1,3 +1,5 @@
+import { LOGO_SM_GOLD_SRC, LOGO_SM_GREEN_SRC } from "./lib/site";
+
 type IconProps = {
   size?: number;
   className?: string;
@@ -15,29 +17,27 @@ const base = (size: number) => ({
   "aria-hidden": true
 });
 
-/** Twin gable houses, echoing the original Parka wordmark. */
-export function BrandMark({ size = 34, className }: IconProps) {
+/** Twin gable houses — gold by default, green tilt on header hover. */
+export function BrandMark({ size = 36, className }: IconProps) {
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 40 32"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth={1.8}
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <path d="M2 15.5 12 6.5l10 9" />
-      <path d="M4.8 13.6V28h14.4V13.6" />
-      <path d="M18 15.5 27 7.6l11 9.9" />
-      <path d="M21 17.4V28h14V17.4" />
-      <path d="M9.4 19.8h4.6v4.4H9.4z" />
-      <path d="M25.6 21.4h4.6v4.4h-4.6z" />
-      <path d="M12 6.5V3.4" />
-    </svg>
+    <span className={className} style={{ width: size, height: size }} aria-hidden="true">
+      <img
+        src={LOGO_SM_GOLD_SRC}
+        alt=""
+        width={size}
+        height={size}
+        className="site-header__mark-img site-header__mark-img--default"
+        draggable={false}
+      />
+      <img
+        src={LOGO_SM_GREEN_SRC}
+        alt=""
+        width={size}
+        height={size}
+        className="site-header__mark-img site-header__mark-img--hover"
+        draggable={false}
+      />
+    </span>
   );
 }
 

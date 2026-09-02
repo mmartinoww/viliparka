@@ -578,14 +578,32 @@ p {
 }
 
 .site-header__mark {
+  position: relative;
+  display: inline-flex;
   flex: none;
-  color: var(--gold);
-  transition: transform 0.4s var(--ease-out), color 0.3s ease;
 }
 
-.site-header__brand:hover .site-header__mark {
+.site-header__mark-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.25s ease, transform 0.4s var(--ease-out);
+}
+
+.site-header__mark-img--hover {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: translateY(0) rotate(0deg);
+}
+
+.site-header__brand:hover .site-header__mark-img--default {
+  opacity: 0;
+}
+
+.site-header__brand:hover .site-header__mark-img--hover {
+  opacity: 1;
   transform: translateY(-2px) rotate(-3deg);
-  color: var(--leaf);
 }
 
 .site-header__wordmark {
@@ -2236,10 +2254,6 @@ p {
   display: inline-flex;
   align-items: center;
   gap: 12px;
-}
-
-.site-footer__brand .site-header__mark {
-  color: var(--gold);
 }
 
 .site-footer__intro {

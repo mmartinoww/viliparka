@@ -20,11 +20,11 @@ export function SiteHeader() {
 
   const nav = [
     { href: "/", label: t.nav.home },
-    { href: "/#houses", label: t.nav.houses },
-    { href: "/#pool", label: t.nav.pool },
+    { href: withTrailingSlash("/#houses"), label: t.nav.houses },
+    { href: withTrailingSlash("/#pool"), label: t.nav.pool },
     { href: AROUND_PATH, label: t.nav.around },
     { href: GALLERY_PATH, label: t.nav.gallery },
-    { href: "/#contact", label: t.nav.contact }
+    { href: withTrailingSlash("/#contact"), label: t.nav.contact }
   ];
 
   const closeMenu = useCallback(() => setMenuOpen(false), []);

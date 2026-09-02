@@ -1,10 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { JsonLdScripts } from "../../components/json-ld-scripts";
 import { HousePage } from "../../components/house-page";
-import { getHouse, houses } from "../../lib/houses";
+import { getHouse, housePath, houses } from "../../lib/houses";
 import { bg } from "../../lib/i18n/bg";
 import type { HouseId } from "../../lib/i18n/types";
-import { SITE_URL, withTrailingSlash } from "../../lib/site";
+import { buildHousePageSchemas } from "../../lib/json-ld";
+import { photo } from "../../lib/photos";
+import { SITE_NAME, absoluteUrl } from "../../lib/site";
 
 type Params = { params: Promise<{ slug: string }> };
 
@@ -18,14 +21,50 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   if (!house) return {};
 
   const copy = bg.houses[house.id as HouseId];
+  const pageUrl = absoluteUrl(housePath(house.id));
+  const image = photo(house.cover).src;
 
   return {
     title: `${copy.name} — ${copy.tagline}`,
     description: copy.metaDescription,
-    alternates: { canonical: `${SITE_URL}${withTrailingSlash(`/vili/${house.id}`)}` },
+    keywords: [
+      `${copy.name} Сапарева баня`,
+      "вилни къщи Сапарева баня",
+      "къща за гости Сапарева баня",
+      "минерален басейн",
+      `${house.sleepsMax ?? house.sleeps} гости`,
+      `${house.bedrooms} спални`,
+      "наем на къща Сапарева баня",
+      SITE_NAME
+    ],
+    alternates: {
+      canonical: pageUrl,
+      languages: {
+        "bg-BG": pageUrl,
+        "en-GB": pageUrl
+      }
+    },
     openGraph: {
-      title: `${copy.name} — вилни къщи Парка, Сапарева баня`,
-      description: copy.metaDescription
+      type: "website",
+      locale: "bg_BG",
+      url: pageUrl,
+      siteName: SITE_NAME,
+      title: `${copy.name} — ${SITE_NAME}, Сапарева баня`,
+      description: copy.metaDescription,
+      images: [
+        {
+          url: image,
+          width: photo(house.cover).width,
+          height: photo(house.cover).height,
+          alt: `${copy.name} — ${SITE_NAME}, Сапарева баня`
+        }
+      ]
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${copy.name} — ${SITE_NAME}`,
+      description: copy.metaDescription,
+      images: [image]
     }
   };
 }
@@ -35,5 +74,12 @@ export default async function Page({ params }: Params) {
   const house = getHouse(slug);
   if (!house) notFound();
 
-  return <HousePage houseId={house.id} />;
+  const schemas = buildHousePageSchemas(house);
+
+  return (
+    <>
+      <JsonLdScripts schemas={schemas} />
+      <HousePage houseId={house.id} />
+    </>
+  );
 }

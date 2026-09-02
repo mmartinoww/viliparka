@@ -33,8 +33,8 @@ export function SiteFooter() {
   const street = t.locale === "bg" ? business.streetAddress : "6 Cherna Skala St.";
 
   const links = [
-    { href: "/#houses", label: t.nav.houses },
-    { href: "/#pool", label: t.nav.pool },
+    { href: withTrailingSlash("/#houses"), label: t.nav.houses },
+    { href: withTrailingSlash("/#pool"), label: t.nav.pool },
     { href: withTrailingSlash("/zabelezhitelnosti"), label: t.nav.around },
     { href: withTrailingSlash("/galeriya"), label: t.nav.gallery },
     { href: housePath("kashta-1"), label: t.houses["kashta-1"].name },
