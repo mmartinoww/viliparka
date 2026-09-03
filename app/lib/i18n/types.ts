@@ -28,6 +28,7 @@ export type Dictionary = {
     pool: string;
     around: string;
     gallery: string;
+    blog: string;
     contact: string;
   };
 

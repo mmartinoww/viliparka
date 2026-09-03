@@ -311,7 +311,7 @@ export function HomePage() {
                 {t.actions.call}
               </a>
               <a className="button button--ghost" href={VIBER_HREF}>
-                <IconViber size={18} />
+                <IconViber size={22} />
                 {t.actions.viber}
               </a>
             </div>

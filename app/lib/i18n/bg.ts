@@ -18,6 +18,7 @@ export const bg: Dictionary = {
     pool: "Басейнът",
     around: "Околността",
     gallery: "Галерия",
+    blog: "Блог",
     contact: "Контакти"
   },
 

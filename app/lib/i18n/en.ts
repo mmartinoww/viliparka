@@ -18,6 +18,7 @@ export const en: Dictionary = {
     pool: "The pool",
     around: "Around us",
     gallery: "Gallery",
+    blog: "Blog",
     contact: "Contact"
   },
 

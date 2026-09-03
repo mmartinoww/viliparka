@@ -1,4 +1,5 @@
 import { houses, housePath, type House } from "./houses";
+import { blogPosts, getBlogPath, type BlogPost } from "./blog";
 import { bg } from "./i18n/bg";
 import type { HouseId } from "./i18n/types";
 import { photo } from "./photos";
@@ -443,6 +444,123 @@ export function buildAroundPageSchemas(): JsonLdObject[] {
         position: index + 1,
         item: attraction
       }))
+    }
+  ];
+}
+
+export function buildBlogIndexSchemas(): JsonLdObject[] {
+  const pageUrl = absoluteUrl("/blog");
+
+  return [
+    lodgingBusinessBase(),
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "@id": `${pageUrl}#blog`,
+      url: pageUrl,
+      name: "Блог на Вилни къщи Парка",
+      description:
+        "Съвети за почивка в Сапарева баня, избор на къща за гости, топъл минерален басейн и разходки около Рила.",
+      inLanguage: "bg-BG",
+      publisher: { "@id": BUSINESS_ID },
+      blogPost: blogPosts.map((post) => ({
+        "@type": "BlogPosting",
+        headline: post.title,
+        url: absoluteUrl(getBlogPath(post.slug)),
+        datePublished: post.date,
+        dateModified: post.dateModified ?? post.date,
+        author: { "@type": "Organization", name: post.author }
+      }))
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Начало",
+          item: HOME_URL
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Блог",
+          item: pageUrl
+        }
+      ]
+    }
+  ];
+}
+
+export function buildBlogPostSchemas(post: BlogPost): JsonLdObject[] {
+  const pageUrl = absoluteUrl(getBlogPath(post.slug));
+  const cover = photo(post.coverPhotoId);
+
+  return [
+    lodgingBusinessBase(),
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "@id": `${pageUrl}#article`,
+      headline: post.title,
+      description: post.description,
+      datePublished: post.date,
+      dateModified: post.dateModified ?? post.date,
+      author: {
+        "@type": "Organization",
+        name: post.author,
+        url: HOME_URL
+      },
+      publisher: { "@id": BUSINESS_ID },
+      mainEntityOfPage: { "@id": `${pageUrl}#webpage` },
+      image: {
+        "@type": "ImageObject",
+        url: `${SITE_URL}${cover.src}`,
+        width: cover.width,
+        height: cover.height
+      },
+      keywords: post.keywords.join(", "),
+      articleSection: post.sections.map((section) => section.heading),
+      inLanguage: "bg-BG"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: post.title,
+      description: post.description,
+      inLanguage: "bg-BG",
+      isPartOf: { "@id": WEBSITE_ID },
+      about: { "@id": BUSINESS_ID },
+      breadcrumb: { "@id": `${pageUrl}#breadcrumb` }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "@id": `${pageUrl}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Начало",
+          item: HOME_URL
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Блог",
+          item: absoluteUrl("/blog")
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: pageUrl
+        }
+      ]
     }
   ];
 }

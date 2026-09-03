@@ -58,7 +58,7 @@ export function IconMail({ size = 20, className }: IconProps) {
   );
 }
 
-export function IconViber({ size = 20, className }: IconProps) {
+export function IconViber({ size = 22, className }: IconProps) {
   return (
     <svg {...base(size)} className={className}>
       <path d="M12 2.8c5 0 8.4 3.2 8.4 7.7 0 4.6-3.4 7.8-8.4 7.8a11 11 0 0 1-2-.2l-3.9 2.6a.5.5 0 0 1-.8-.5l.5-3.3C3.9 15.6 3 13.2 3 10.5 3 6 6.9 2.8 12 2.8Z" />

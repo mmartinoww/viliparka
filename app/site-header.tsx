@@ -10,6 +10,7 @@ import { PHONE_PRIMARY_HREF, withTrailingSlash } from "./lib/site";
 
 const AROUND_PATH = withTrailingSlash("/zabelezhitelnosti");
 const GALLERY_PATH = withTrailingSlash("/galeriya");
+const BLOG_PATH = withTrailingSlash("/blog");
 
 export function SiteHeader() {
   const t = useCopy();
@@ -24,6 +25,7 @@ export function SiteHeader() {
     { href: withTrailingSlash("/#pool"), label: t.nav.pool },
     { href: AROUND_PATH, label: t.nav.around },
     { href: GALLERY_PATH, label: t.nav.gallery },
+    { href: BLOG_PATH, label: t.nav.blog },
     { href: withTrailingSlash("/#contact"), label: t.nav.contact }
   ];
 

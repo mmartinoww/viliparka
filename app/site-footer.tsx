@@ -37,6 +37,7 @@ export function SiteFooter() {
     { href: withTrailingSlash("/#pool"), label: t.nav.pool },
     { href: withTrailingSlash("/zabelezhitelnosti"), label: t.nav.around },
     { href: withTrailingSlash("/galeriya"), label: t.nav.gallery },
+    { href: withTrailingSlash("/blog"), label: t.nav.blog },
     { href: housePath("kashta-1"), label: t.houses["kashta-1"].name },
     { href: housePath("kashta-2"), label: t.houses["kashta-2"].name },
     { href: housePath("kashta-3"), label: t.houses["kashta-3"].name },
@@ -101,7 +102,7 @@ export function SiteFooter() {
             <span className="contact-item__label">{t.footer.followLabel}</span>
             <div className="social-row" style={{ marginTop: 10 }}>
               <a className="social-link" href={VIBER_HREF}>
-                <IconViber size={18} />
+                <IconViber size={22} />
                 Viber
               </a>
               <a className="social-link" href={FACEBOOK_URL} target="_blank" rel="noreferrer">
