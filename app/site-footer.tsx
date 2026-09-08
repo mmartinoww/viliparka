@@ -30,7 +30,7 @@ export function SiteFooter() {
   const t = useCopy();
   const year = new Date().getFullYear();
   const city = t.locale === "bg" ? business.city : business.cityEn;
-  const street = t.locale === "bg" ? business.streetAddress : "6 Cherna Skala St.";
+  const street = t.locale === "bg" ? business.streetAddress : "8 Cherna Skala St.";
 
   const links = [
     { href: withTrailingSlash("/#houses"), label: t.nav.houses },

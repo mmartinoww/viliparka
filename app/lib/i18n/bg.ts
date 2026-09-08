@@ -44,7 +44,7 @@ export const bg: Dictionary = {
   },
 
   hero: {
-    eyebrow: "Сапарева баня · ул. Черна скала 6",
+    eyebrow: "Сапарева баня · ул. Черна скала 8",
     titleLine1: "Вилни къщи",
     titleLine2: "Парка",
     titlePlace: "Сапарева баня · топъл минерален басейн целогодишно",

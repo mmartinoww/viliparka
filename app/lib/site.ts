@@ -54,7 +54,7 @@ export const GEO = { latitude: 42.286831, longitude: 23.254034 };
 
 export const business = {
   legalName: "Вилни къщи Парка",
-  streetAddress: "ул. Черна скала 6",
+  streetAddress: "ул. Черна скала 8",
   city: "Сапарева баня",
   cityEn: "Sapareva Banya",
   postalCode: "2650",

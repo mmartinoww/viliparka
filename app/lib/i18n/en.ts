@@ -44,7 +44,7 @@ export const en: Dictionary = {
   },
 
   hero: {
-    eyebrow: "Sapareva Banya · 6 Cherna Skala St.",
+    eyebrow: "Sapareva Banya · 8 Cherna Skala St.",
     titleLine1: "Guest houses",
     titleLine2: "Parka",
     titlePlace: "Sapareva Banya · warm mineral pool all year round",
