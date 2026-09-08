@@ -2,7 +2,7 @@ import { houses, housePath, type House } from "./houses";
 import { blogPosts, getBlogPath, type BlogPost } from "./blog";
 import { bg } from "./i18n/bg";
 import type { HouseId } from "./i18n/types";
-import { photo } from "./photos";
+import { photo, type PhotoId } from "./photos";
 import {
   BUSINESS_ID,
   EMAIL,
@@ -21,6 +21,45 @@ import {
 } from "./site";
 
 type JsonLdObject = Record<string, unknown>;
+
+/**
+ * Google's Rich Results check wants at least 8 real photo URLs per VacationRental.
+ * Individual houses don't have 8 unique interior shots, so we pad with real photos
+ * of the shared premises (pool, garden) the guests of that house also use.
+ */
+const SHARED_PROPERTY_PHOTOS: PhotoId[] = [
+  "gardenAerial",
+  "gardenDusk",
+  "gardenLawn",
+  "poolSummer",
+  "poolWinter",
+  "aerialWinter"
+];
+
+function houseImageUrls(house: House): string[] {
+  const ids: PhotoId[] = [...house.photos];
+  for (const id of SHARED_PROPERTY_PHOTOS) {
+    if (ids.length >= 8) break;
+    if (!ids.includes(id)) ids.push(id);
+  }
+  return ids.map((id) => `${SITE_URL}${photo(id).src}`);
+}
+
+function houseOccupancy(house: House): JsonLdObject {
+  return {
+    "@type": "QuantitativeValue",
+    value: house.sleepsMax ?? house.sleeps,
+    unitText: "guests"
+  };
+}
+
+function houseGeo(): JsonLdObject {
+  return {
+    "@type": "GeoCoordinates",
+    latitude: GEO.latitude,
+    longitude: GEO.longitude
+  };
+}
 
 const amenities = [
   "Топъл минерален басейн",
@@ -106,11 +145,7 @@ function houseOffer(house: House): JsonLdObject {
       url: pageUrl,
       image: imageUrl,
       numberOfBedrooms: house.bedrooms,
-      occupancy: {
-        "@type": "QuantitativeValue",
-        maxValue: house.sleepsMax ?? house.sleeps,
-        unitText: "guests"
-      },
+      occupancy: houseOccupancy(house),
       amenityFeature: copy.features.map((name) => ({
         "@type": "LocationFeatureSpecification",
         name,
@@ -294,15 +329,28 @@ export function buildHousePageSchemas(house: House): JsonLdObject[] {
       "@context": "https://schema.org",
       "@type": "VacationRental",
       "@id": `${pageUrl}#accommodation`,
+      identifier: `parka-${house.id}`,
+      additionalType: "House",
       name: `${copy.name} — ${SITE_NAME}`,
       description: copy.metaDescription,
       url: pageUrl,
-      image: house.photos.map((photoId) => `${SITE_URL}${photo(photoId).src}`),
+      image: houseImageUrls(house),
       numberOfBedrooms: house.bedrooms,
-      occupancy: {
-        "@type": "QuantitativeValue",
-        maxValue: house.sleepsMax ?? house.sleeps,
-        unitText: "guests"
+      latitude: GEO.latitude,
+      longitude: GEO.longitude,
+      geo: houseGeo(),
+      occupancy: houseOccupancy(house),
+      containsPlace: {
+        "@type": "Accommodation",
+        additionalType: "EntirePlace",
+        name: copy.name,
+        occupancy: houseOccupancy(house),
+        numberOfBedrooms: house.bedrooms,
+        amenityFeature: copy.features.map((name) => ({
+          "@type": "LocationFeatureSpecification",
+          name,
+          value: true
+        }))
       },
       amenityFeature: copy.features.map((name) => ({
         "@type": "LocationFeatureSpecification",
