@@ -423,6 +423,8 @@ export const en: Dictionary = {
     monastery: "Rila Monastery in the snow with its striped arcades and domes",
     monasteryNight: "Rila Monastery lit up at night",
     craterLake: "A glacial lake among rock and snow high in the Rila mountains",
-    lakeWinter: "A frozen Rila lake surrounded by snow-covered peaks in winter"
+    lakeWinter: "A frozen Rila lake surrounded by snow-covered peaks in winter",
+    sedemteRilskiEzeraBlog:
+      "Panoramic view of the Seven Rila Lakes in the Rila mountains above Sapareva Banya"
   }
 };

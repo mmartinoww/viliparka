@@ -47,7 +47,14 @@ export const photos = {
   monastery: { src: "/around/rila-monastery.webp", width: 1024, height: 768, group: "around" },
   monasteryNight: { src: "/around/rila-monastery-night.webp", width: 700, height: 420, group: "around" },
   craterLake: { src: "/around/crater-lake.webp", width: 1600, height: 1059, group: "around" },
-  lakeWinter: { src: "/around/rila-lake-winter.webp", width: 900, height: 600, group: "around" }
+  lakeWinter: { src: "/around/rila-lake-winter.webp", width: 900, height: 600, group: "around" },
+
+  sedemteRilskiEzeraBlog: {
+    src: "/blog/sedemte-rilski-ezera-1.jpg",
+    width: 2048,
+    height: 699,
+    group: "around"
+  }
 } as const satisfies Record<string, Omit<Photo, "id">>;
 
 export type PhotoId = keyof typeof photos;
