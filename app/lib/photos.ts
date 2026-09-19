@@ -54,6 +54,12 @@ export const photos = {
     width: 2048,
     height: 699,
     group: "around"
+  },
+  zabelezhitelnostiOkoloSaparevaBanyaBlog: {
+    src: "/property/rila-panorama.webp",
+    width: 1100,
+    height: 499,
+    group: "around"
   }
 } as const satisfies Record<string, Omit<Photo, "id">>;
 

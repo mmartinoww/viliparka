@@ -24,6 +24,8 @@ export type BlogPost = {
   author: string;
   excerpt: string;
   coverPhotoId: PhotoId;
+  /** Alt text for the hero / Open Graph image when it should differ from the title. */
+  coverAlt?: string;
   intro: string;
   sections: BlogSection[];
   conclusionTitle: string;

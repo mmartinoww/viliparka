@@ -425,6 +425,8 @@ export const en: Dictionary = {
     craterLake: "A glacial lake among rock and snow high in the Rila mountains",
     lakeWinter: "A frozen Rila lake surrounded by snow-covered peaks in winter",
     sedemteRilskiEzeraBlog:
-      "Panoramic view of the Seven Rila Lakes in the Rila mountains above Sapareva Banya"
+      "Panoramic view of the Seven Rila Lakes in the Rila mountains above Sapareva Banya",
+    zabelezhitelnostiOkoloSaparevaBanyaBlog:
+      "A beautiful view of Rila and the attractions around Sapareva Banya"
   }
 };

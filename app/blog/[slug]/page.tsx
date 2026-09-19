@@ -63,7 +63,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
           url: cover.src,
           width: cover.width,
           height: cover.height,
-          alt: post.title
+          alt: post.coverAlt ?? post.title
         }
       ]
     },

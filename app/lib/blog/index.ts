@@ -2,6 +2,7 @@ import { withTrailingSlash } from "../site";
 import { kashtaZaGostiSaparevaBanyaKakDaIzberem } from "./posts/kashta-za-gosti-sapareva-banya-kak-da-izberem";
 import { mineralenBaseynZimataSaparevaBanya } from "./posts/mineralen-baseyn-zimata-sapareva-banya";
 import { sedemteRilskiEzeraOtSaparevaBanya } from "./posts/sedemte-rilski-ezera-ot-sapareva-banya";
+import { zabelezhitelnostiOkoloSaparevaBanya } from "./posts/zabelezhitelnosti-okolo-sapareva-banya";
 import type { BlogCategory, BlogPost } from "./types";
 
 export type { BlogCategory, BlogPost };
@@ -20,6 +21,7 @@ export const blogCategories: BlogCategory[] = [
 ];
 
 export const blogPosts: BlogPost[] = [
+  zabelezhitelnostiOkoloSaparevaBanya,
   sedemteRilskiEzeraOtSaparevaBanya,
   kashtaZaGostiSaparevaBanyaKakDaIzberem,
   mineralenBaseynZimataSaparevaBanya
