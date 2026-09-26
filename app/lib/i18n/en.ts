@@ -427,6 +427,8 @@ export const en: Dictionary = {
     sedemteRilskiEzeraBlog:
       "Panoramic view of the Seven Rila Lakes in the Rila mountains above Sapareva Banya",
     zabelezhitelnostiOkoloSaparevaBanyaBlog:
-      "A beautiful view of Rila and the attractions around Sapareva Banya"
+      "A beautiful view of Rila and the attractions around Sapareva Banya",
+    uikendVSaparevaBanyaBlog:
+      "Weekend in Sapareva Banya with a view of Rila and a mineral pool"
   }
 };
