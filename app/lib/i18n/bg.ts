@@ -429,6 +429,7 @@ export const bg: Dictionary = {
     zabelezhitelnostiOkoloSaparevaBanyaBlog:
       "Красива гледка към Рила и забележителностите около Сапарева баня",
     uikendVSaparevaBanyaBlog:
-      "Уикенд в Сапарева баня с гледка към Рила и минерален басейн"
+      "Уикенд в Сапарева баня с гледка към Рила и минерален басейн",
+    vodopadGoritsaBlog: "Водопад Горица край село Овчарци в Рила"
   }
 };

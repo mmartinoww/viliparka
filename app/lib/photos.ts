@@ -66,6 +66,12 @@ export const photos = {
     width: 1100,
     height: 499,
     group: "around"
+  },
+  vodopadGoritsaBlog: {
+    src: "/blog/vodopad-gorica1.jpg",
+    width: 980,
+    height: 1307,
+    group: "around"
   }
 } as const satisfies Record<string, Omit<Photo, "id">>;
 
