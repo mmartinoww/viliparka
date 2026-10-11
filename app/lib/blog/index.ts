@@ -1,6 +1,7 @@
 import { withTrailingSlash } from "../site";
 import { kashtaZaGostiSaparevaBanyaKakDaIzberem } from "./posts/kashta-za-gosti-sapareva-banya-kak-da-izberem";
 import { mineralenBaseynZimataSaparevaBanya } from "./posts/mineralen-baseyn-zimata-sapareva-banya";
+import { pochivkaSDecaSaparevaBanya } from "./posts/pochivka-s-deca-sapareva-banya";
 import { sedemteRilskiEzeraOtSaparevaBanya } from "./posts/sedemte-rilski-ezera-ot-sapareva-banya";
 import { uikendVSaparevaBanya2Dni } from "./posts/uikend-v-sapareva-banya-2-dni";
 import { vodopadGoritsaSaparevaBanya } from "./posts/vodopad-goritsa-sapareva-banya";
@@ -23,6 +24,7 @@ export const blogCategories: BlogCategory[] = [
 ];
 
 export const blogPosts: BlogPost[] = [
+  pochivkaSDecaSaparevaBanya,
   vodopadGoritsaSaparevaBanya,
   uikendVSaparevaBanya2Dni,
   zabelezhitelnostiOkoloSaparevaBanya,

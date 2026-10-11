@@ -72,6 +72,12 @@ export const photos = {
     width: 980,
     height: 1307,
     group: "around"
+  },
+  pochivkaSDecaSaparevaBanyaBlog: {
+    src: "/property/pool-summer.webp",
+    width: 1440,
+    height: 1439,
+    group: "pool"
   }
 } as const satisfies Record<string, Omit<Photo, "id">>;
 
