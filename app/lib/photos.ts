@@ -78,6 +78,12 @@ export const photos = {
     width: 1440,
     height: 1439,
     group: "pool"
+  },
+  kashtaZaGolyamaKompaniaSaparevaBanyaBlog: {
+    src: "/property/garden-aerial.webp",
+    width: 1119,
+    height: 1080,
+    group: "property"
   }
 } as const satisfies Record<string, Omit<Photo, "id">>;
 

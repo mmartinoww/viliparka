@@ -432,6 +432,8 @@ export const en: Dictionary = {
       "Weekend in Sapareva Banya with a view of Rila and a mineral pool",
     vodopadGoritsaBlog: "Goritsa waterfall near Ovcharsi village in Rila",
     pochivkaSDecaSaparevaBanyaBlog:
-      "Family holiday with children and a warm mineral pool in Sapareva Banya"
+      "Family holiday with children and a warm mineral pool in Sapareva Banya",
+    kashtaZaGolyamaKompaniaSaparevaBanyaBlog:
+      "Guest houses for a large group with a mineral pool and green garden in Sapareva Banya"
   }
 };
