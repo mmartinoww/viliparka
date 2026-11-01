@@ -6,6 +6,7 @@ import { useCopy } from "../lib/i18n/language-provider";
 
 type PhotoProps = {
   id: PhotoId;
+  alt?: string;
   sizes?: string;
   priority?: boolean;
   className?: string;
@@ -13,16 +14,16 @@ type PhotoProps = {
   fill?: boolean;
 };
 
-export function Photo({ id, sizes = "100vw", priority, className, fill }: PhotoProps) {
+export function Photo({ id, alt, sizes = "100vw", priority, className, fill }: PhotoProps) {
   const t = useCopy();
   const source = photo(id);
-  const alt = t.photoAlt[id];
+  const resolvedAlt = alt ?? t.photoAlt[id];
 
   if (fill) {
     return (
       <Image
         src={source.src}
-        alt={alt}
+        alt={resolvedAlt}
         fill
         sizes={sizes}
         priority={priority}
@@ -34,7 +35,7 @@ export function Photo({ id, sizes = "100vw", priority, className, fill }: PhotoP
   return (
     <Image
       src={source.src}
-      alt={alt}
+      alt={resolvedAlt}
       width={source.width}
       height={source.height}
       sizes={sizes}

@@ -10,6 +10,7 @@ export type BlogSection = {
   heading: string;
   paragraphs: string[];
   listItems?: string[];
+  afterListParagraphs?: string[];
   photoId?: PhotoId;
 };
 
@@ -26,7 +27,7 @@ export type BlogPost = {
   coverPhotoId: PhotoId;
   /** Alt text for the hero / Open Graph image when it should differ from the title. */
   coverAlt?: string;
-  intro: string;
+  intro: string | string[];
   sections: BlogSection[];
   conclusionTitle: string;
   conclusionParagraphs: string[];

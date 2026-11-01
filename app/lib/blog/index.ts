@@ -1,4 +1,5 @@
 import { withTrailingSlash } from "../site";
+import { kashtaZaGostiIliHotelPochivkaSPriyateli } from "./posts/kashta-za-gosti-ili-hotel-pochivka-s-priyateli";
 import { kashtaZaGolyamaKompaniaSaparevaBanya } from "./posts/kashta-za-golyama-kompania-sapareva-banya";
 import { kashtaZaGostiSaparevaBanyaKakDaIzberem } from "./posts/kashta-za-gosti-sapareva-banya-kak-da-izberem";
 import { mineralenBaseynZimataSaparevaBanya } from "./posts/mineralen-baseyn-zimata-sapareva-banya";
@@ -25,6 +26,7 @@ export const blogCategories: BlogCategory[] = [
 ];
 
 export const blogPosts: BlogPost[] = [
+  kashtaZaGostiIliHotelPochivkaSPriyateli,
   kashtaZaGolyamaKompaniaSaparevaBanya,
   pochivkaSDecaSaparevaBanya,
   vodopadGoritsaSaparevaBanya,

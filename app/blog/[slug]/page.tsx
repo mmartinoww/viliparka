@@ -91,7 +91,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         intro={
           <section className="page-hero" aria-labelledby="blog-post-heading">
             <div className="page-hero__media">
-              <Photo id={post.coverPhotoId} fill priority sizes="100vw" />
+              <Photo
+                id={post.coverPhotoId}
+                alt={post.coverAlt}
+                fill
+                priority
+                sizes="100vw"
+              />
             </div>
             <div className="page-hero__scrim" aria-hidden="true" />
 
@@ -123,7 +129,11 @@ export default async function BlogPostPage({ params }: PageProps) {
               <meta itemProp="dateModified" content={post.dateModified ?? post.date} />
               <meta itemProp="author" content={post.author} />
 
-              <p className="blog-post__intro">{post.intro}</p>
+              {(Array.isArray(post.intro) ? post.intro : [post.intro]).map((paragraph) => (
+                <p className="blog-post__intro" key={paragraph}>
+                  {paragraph}
+                </p>
+              ))}
 
               {post.sections.map((section) => (
                 <section className="blog-post__section" key={section.heading}>
@@ -143,6 +153,9 @@ export default async function BlogPostPage({ params }: PageProps) {
                       ))}
                     </ul>
                   ) : null}
+                  {section.afterListParagraphs?.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
                 </section>
               ))}
 
