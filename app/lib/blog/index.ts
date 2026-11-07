@@ -3,6 +3,7 @@ import { kashtaZaGostiIliHotelPochivkaSPriyateli } from "./posts/kashta-za-gosti
 import { kashtaZaGolyamaKompaniaSaparevaBanya } from "./posts/kashta-za-golyama-kompania-sapareva-banya";
 import { kashtaZaGostiSaparevaBanyaKakDaIzberem } from "./posts/kashta-za-gosti-sapareva-banya-kak-da-izberem";
 import { mineralenBaseynZimataSaparevaBanya } from "./posts/mineralen-baseyn-zimata-sapareva-banya";
+import { poddrushkaMineralenBaseynViliSaparevaBanya } from "./posts/poddrushka-mineralen-baseyn-vili-sapareva-banya";
 import { pochivkaSDecaSaparevaBanya } from "./posts/pochivka-s-deca-sapareva-banya";
 import { sedemteRilskiEzeraOtSaparevaBanya } from "./posts/sedemte-rilski-ezera-ot-sapareva-banya";
 import { uikendVSaparevaBanya2Dni } from "./posts/uikend-v-sapareva-banya-2-dni";
@@ -26,6 +27,7 @@ export const blogCategories: BlogCategory[] = [
 ];
 
 export const blogPosts: BlogPost[] = [
+  poddrushkaMineralenBaseynViliSaparevaBanya,
   kashtaZaGostiIliHotelPochivkaSPriyateli,
   kashtaZaGolyamaKompaniaSaparevaBanya,
   pochivkaSDecaSaparevaBanya,
