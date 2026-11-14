@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BlogCard } from "../../components/blog-card";
@@ -24,6 +25,38 @@ import {
 } from "../../lib/site";
 
 type PageProps = { params: Promise<{ slug: string }> };
+
+function renderLinkedText(
+  text: string,
+  links: { text: string; href: string }[] = []
+): ReactNode {
+  const nodes: ReactNode[] = [];
+  let remaining = text;
+  let key = 0;
+
+  while (remaining) {
+    const matches = links
+      .map((link) => ({ link, index: remaining.indexOf(link.text) }))
+      .filter((match) => match.index >= 0)
+      .sort((a, b) => a.index - b.index);
+    const next = matches[0];
+
+    if (!next) {
+      nodes.push(remaining);
+      break;
+    }
+
+    if (next.index > 0) nodes.push(remaining.slice(0, next.index));
+    nodes.push(
+      <Link href={next.link.href} key={`${next.link.href}-${key++}`}>
+        {next.link.text}
+      </Link>
+    );
+    remaining = remaining.slice(next.index + next.link.text.length);
+  }
+
+  return nodes;
+}
 
 export function generateStaticParams() {
   return blogPosts.map((post) => ({ slug: post.slug }));
@@ -144,8 +177,39 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </figure>
                   ) : null}
                   {section.paragraphs.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}>{renderLinkedText(paragraph, section.links)}</p>
                   ))}
+                  {section.table ? (
+                    <div className="blog-post__table-wrap">
+                      <table>
+                        <caption>{section.table.caption}</caption>
+                        <thead>
+                          <tr>
+                            {section.table.headers.map((header) => (
+                              <th scope="col" key={header}>
+                                {header}
+                              </th>
+                            ))}
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {section.table.rows.map((row) => (
+                            <tr key={row.join("-")}>
+                              {row.map((cell, index) =>
+                                index === 0 ? (
+                                  <th scope="row" key={cell}>
+                                    {cell}
+                                  </th>
+                                ) : (
+                                  <td key={cell}>{cell}</td>
+                                )
+                              )}
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  ) : null}
                   {section.listItems ? (
                     <ul>
                       {section.listItems.map((item) => (
@@ -154,7 +218,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     </ul>
                   ) : null}
                   {section.afterListParagraphs?.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                    <p key={paragraph}>{renderLinkedText(paragraph, section.links)}</p>
                   ))}
                 </section>
               ))}

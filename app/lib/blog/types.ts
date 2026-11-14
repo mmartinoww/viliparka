@@ -12,6 +12,15 @@ export type BlogSection = {
   listItems?: string[];
   afterListParagraphs?: string[];
   photoId?: PhotoId;
+  links?: {
+    text: string;
+    href: string;
+  }[];
+  table?: {
+    caption: string;
+    headers: string[];
+    rows: string[][];
+  };
 };
 
 export type BlogPost = {
